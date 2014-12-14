@@ -8,7 +8,6 @@ gem 'pg'
 gem 'rails', '4.1.8'
 gem 'sass-rails', '~> 4.0.3'
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
 gem 'uglifier', '>= 1.3.0'
 
 # Use ActiveModel has_secure_password
@@ -22,3 +21,23 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :development do
+  gem 'byebug'
+  gem 'puma'
+  gem 'spring'
+end
+
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'poltergeist'
+  gem 'simplecov'
+  gem 'shoulda-matchers', require: false
+end
