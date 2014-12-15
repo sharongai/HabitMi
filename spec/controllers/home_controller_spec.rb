@@ -7,4 +7,18 @@ RSpec.describe HomeController, :type => :controller do
       expect(response).to be_success
     end
   end
+
+  describe 'GET about' do
+    it 'should return success' do
+      get :about
+      expect(response).to be_success
+    end
+  end
+
+  describe 'GET contact' do
+    it 'should return success' do
+      get :contact
+      expect(response).to be_success
+    end
+  end
 end
