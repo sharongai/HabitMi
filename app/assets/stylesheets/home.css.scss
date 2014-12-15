@@ -1,6 +1,27 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 h1 {
-	font-size: 30px;
+	text-align: center;
+}
+.section{
+	text-align: center;
+}
+.circle {
+	height:200px;
+	width:200px;
+	line-height: 200px;
+	border-radius: 100px;
+	background-color: grey;
+	text-align: center;
+	margin:0 auto;
+	margin-bottom:30px;
+}
+
+.column {
+	text-align: center;
+}
+.caption {
+	text-align: left;
 }
