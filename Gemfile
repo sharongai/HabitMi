@@ -2,12 +2,10 @@ source 'https://rubygems.org'
 
 ruby '2.1.3'
 
-gem 'fullcalendar-rails'
 gem 'devise'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'omniauth-facebook'
-gem 'momentjs-rails'
 gem 'pg'
 gem 'rails', '4.1.8'
 gem 'sass-rails', '~> 4.0.3'
