@@ -1,9 +1,11 @@
-<header class="container">
-  <div class="u-pull-left">
-    <p>Hello</p>
-  </div>
+<header>
+  <div class="container">
+    <div class="sign-in u-pull-left">
+      <%= link_to 'Sign In', new_user_session_path %>
+    </div>
 
-  <div class="u-pull-right">
-    <p>lala</p>
+    <div class="logo u-pull-right">
+      <%= link_to 'HabitMi', root_path %>
+    </div>
   </div>
 </header>

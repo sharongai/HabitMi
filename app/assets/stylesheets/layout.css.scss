@@ -1,2 +1,38 @@
-header {}
-footer {}
+header {
+  background-color: $type-aqua-blue;
+  color: white;
+  padding-top: 14px;
+  height: 40px;
+
+  div.sign-in {
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  div.logo {
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
+
+footer {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: $type-aqua-blue;
+  color: white;
+
+  ul {
+    li {
+      list-style: none;
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+}

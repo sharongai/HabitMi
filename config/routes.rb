@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'home#index'
 
-  get '/about' => 'home#about'
-  get '/contact' => 'home#contact'
+  get '/about-us' => 'home#about_us'
+  get '/contact-us' => 'home#contact_us'
   get '/peoplesgoals'=> 'home#peoplesgoals'
 
   # Example of regular route:
