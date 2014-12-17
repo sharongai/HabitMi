@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'omniauth-facebook'
 gem 'pg'
 gem 'rails', '4.1.8'
+gem 'rails_12factor', group: :production
 gem 'sass-rails', '~> 4.0.3'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'uglifier', '>= 1.3.0'
