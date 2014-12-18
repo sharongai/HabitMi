@@ -1,0 +1,9 @@
+.btn-facebook {
+  background-color: $type-facebook-blue !important;
+  color: white;
+  border: none;
+
+  &:hover {
+    background-color: #2C4898 !important;
+  }
+}
