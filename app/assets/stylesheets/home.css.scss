@@ -13,4 +13,46 @@ section.home-page {
       color: white;
     }
   }
+
+  div.explanation-carousel {
+    margin-bottom: 50px;
+
+    div.icons {
+      text-align: center;
+
+      div.columns {
+        a {
+          text-decoration: none;
+          color: black;
+          i {
+            border: 2px solid LightGray;
+            border-radius: 50%;
+            padding: 20px;
+            color: LightGray;
+          }
+        }
+
+        &.active {
+          a {
+            text-decoration: none;
+            color: $type-aqua-blue;
+            i {
+              border: 2px solid $type-aqua-blue;
+              border-radius: 50%;
+              padding: 20px;
+              color: $type-aqua-blue;
+            }
+          }
+        }
+      }
+    }
+
+    div.explanations {
+      display: none;
+
+      &.active {
+        display: initial;
+      }
+    }
+  }
 }

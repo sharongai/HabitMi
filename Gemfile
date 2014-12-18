@@ -4,6 +4,7 @@ ruby '2.1.3'
 
 gem 'devise'
 gem 'dotenv-rails', :groups => [:development, :test]
+gem "font-awesome-rails"
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'omniauth-facebook'

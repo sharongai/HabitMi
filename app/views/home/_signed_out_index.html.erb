@@ -1,20 +1,95 @@
 <section class="home-page">
-  <div class="title-logo">
-    <h1>HabitMi</h1>
-    <p>
-      Get a head start to creating lasting habits and become the best you!
-    </p>
-    <%= link_to 'Join Today', new_user_registration_path, class: 'button' %>
+  <div class="title-logo row">
+    <div class="twelve columns">
+      <h1>HabitMi</h1>
+      <p>
+        Get a head start to creating lasting habits and become the best you!
+      </p>
+      <%= link_to 'Join Today', new_user_registration_path, class: 'button' %>
+    </div>
   </div>
 
   <div class="explanation-carousel container">
-    <h1>What HabitMi Aims to Achieve</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
-      odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla
-      quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent
-      mauris. Fusce nec tellus sed augue semper porta. Mauris massa.
-      Vestibulum lacinia arcu eget nulla.
-    </p>
+    <div class="row icons">
+      <div class="three columns active">
+        <a href="#" class="icon-link our-mission">
+          <%= fa_icon 'file-text-o 3x' %>
+          <p>Our Mission</p>
+        </a>
+      </div>
+      <div class="three columns">
+        <a href="#" class="icon-link trending-goals">
+          <%= fa_icon 'heart 3x' %>
+          <p>Trending Goals</p>
+        </a>
+      </div>
+      <div class="three columns">
+        <a href="#" class="icon-link how-to-habit-mi">
+          <%= fa_icon 'calendar 3x' %>
+          <p>How to HabitMi</p>
+        </a>
+      </div>
+      <div class="three columns">
+        <a href="#" class="icon-link win-prizes">
+          <%= fa_icon 'gift 3x' %>
+          <p>Win Prizes</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="explanations our-mission row active">
+      <div class="twelve columns">
+        <h1>Our Mission</h1>
+        <p>
+          Have you ever set a goal and then lacked the motivation to follow
+          through?
+        </p>
+        <p>Well, we have too.</p>
+        <p>
+          Sometimes that Game of Thrones episode is so much more tempting than
+          diving back into the Python course on Codeacademy, and the tray of
+          free cupcakes in the staff room seems to be calling out to you
+          much more than the salad bowl beside it.
+        </p>
+        <p>
+          HabitMi is here to change that. Our mission is to turn the goal
+          you want to achieve into habit, so that it won’t seem like
+          something you have to force yourself to do.
+        </p>
+      </div>
+    </div>
+
+    <div class="explanations trending-goals row">
+      <div class="twelve columns">
+        <h1>Trending Goals</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
+          odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla
+          quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent
+          mauris. Fusce nec tellus sed augue semper porta. Mauris massa.
+          Vestibulum lacinia arcu eget nulla.
+        </p>
+      </div>
+    </div>
+
+    <div class="explanations how-to-habit-mi row">
+      <div class="twelve columns">
+        <h1>How To HabitMi</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
+          odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla
+          quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent
+          mauris. Fusce nec tellus sed augue semper porta. Mauris massa.
+          Vestibulum lacinia arcu eget nulla.
+        </p>
+      </div>
+    </div>
+
+    <div class="explanations win-prizes row">
+      <div class="twelve columns">
+        <h1>Win Prizes</h1>
+        <p>Prizes Coming Soon...</p>
+      </div>
+    </div>
   </div>
 </section>
