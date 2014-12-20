@@ -8,16 +8,16 @@ RSpec.describe HomeController, :type => :controller do
     end
   end
 
-  describe 'GET about' do
+  describe 'GET about_us' do
     it 'should return success' do
-      get :about
+      get :about_us
       expect(response).to be_success
     end
   end
 
-  describe 'GET contact' do
+  describe 'GET contact_us' do
     it 'should return success' do
-      get :contact
+      get :contact_us
       expect(response).to be_success
     end
   end

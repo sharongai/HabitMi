@@ -22,3 +22,9 @@ sharon = User.create email: 'sharon@gmail.com',
                      last_name: 'Gai',
                      password: 'password',
                      password_confirmation: 'password'
+
+# Create Categories
+['Health', 'Fitness', 'Social', 'Self-Improvement', 'Relationships',
+ 'Education'].each do |category_name|
+  Category.create name: category_name
+end

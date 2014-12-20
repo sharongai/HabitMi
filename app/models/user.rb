@@ -5,6 +5,16 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  has_many :selected_categories
+  has_many :categories, through: :selected_categories
+
+  has_many :goals
+  has_many :participations
+  has_many :participating_goals, through: :participations, class_name: 'Goal'
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -21,5 +31,9 @@ class User < ActiveRecord::Base
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end
