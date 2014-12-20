@@ -13,6 +13,7 @@ header {
 
   div.logo {
     a {
+      font-family: 'Pacifico';
       text-decoration: none;
       color: white;
     }
@@ -33,6 +34,12 @@ footer {
         text-decoration: none;
         color: white;
       }
+    }
+  }
+
+  p {
+    span.logo {
+      font-family: 'Pacifico';
     }
   }
 }
