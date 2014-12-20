@@ -9,4 +9,5 @@ RSpec.describe Goal, :type => :model do
        class_name('User') }
 
   it { should validate_presence_of :title }
+  it { should validate_presence_of :start_date }
 end

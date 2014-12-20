@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :goals
   has_many :participations
-  has_many :participating_goals, through: :participations, class_name: 'Goal'
+  has_many :participating_goals, through: :participations, source: :goal,
+    class_name: 'Goal'
 
   validates :first_name, presence: true
   validates :last_name, presence: true

@@ -64,6 +64,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     font-awesome-rails (4.2.0.0)
@@ -109,6 +111,10 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     pg (0.17.1)
+    pg_search (0.7.8)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     poltergeist (1.5.1)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -213,12 +219,14 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_girl_rails
+  faker
   font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
   launchy
   omniauth-facebook
   pg
+  pg_search
   poltergeist
   puma
   rails (= 4.1.8)

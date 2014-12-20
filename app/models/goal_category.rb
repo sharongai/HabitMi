@@ -4,4 +4,6 @@ class GoalCategory < ActiveRecord::Base
 
   validates :goal, presence: true
   validates :category, presence: true
+
+  validates :category_id, uniqueness: { scope: :goal_id }
 end

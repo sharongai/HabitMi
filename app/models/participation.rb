@@ -4,4 +4,5 @@ class Participation < ActiveRecord::Base
 
   validates :user, presence: true
   validates :goal, presence: true
+  validates :user_id, uniqueness: { scope: :goal_id }
 end

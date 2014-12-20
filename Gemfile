@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'omniauth-facebook'
 gem 'pg'
+gem 'pg_search'
 gem 'rails', '4.1.8'
 gem 'rails_12factor', group: :production
 gem 'sass-rails', '~> 4.0.3'
@@ -35,6 +36,7 @@ end
 
 group :development, :test do
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'rspec-rails'
 end
 
