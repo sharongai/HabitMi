@@ -2,9 +2,11 @@
 @import 'normalize';
 @import '_colors';
 @import '_buttons';
+@import '_forms';
 @import 'font-awesome';
 @import 'layout';
-@import 'home';
+@import 'home_signed_out';
+@import 'home_signed_in';
 @import 'contact';
 @import 'about';
 @import 'sign_up';
