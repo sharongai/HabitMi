@@ -7,3 +7,12 @@
     background-color: #2C4898 !important;
   }
 }
+
+.btn-white {
+  background-color: white !important;
+  color: black !important;
+
+  &:hover {
+    background-color: LightGray !important;
+  }
+}

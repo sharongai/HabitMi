@@ -5,11 +5,14 @@
         <h1>Start Your Goal Today.</h1>
         <span>I want to</span>
         <%= text_field_tag :goal_search, nil, class: 'u-full-width' %>
+        <%= link_to 'Create', new_goal_path,
+          class: 'button button-primary btn-white' %>
       </div>
     </div>
   </div>
 
-  <div class="goal-results-holder">
+  <div class="goal-results-holder container">
+    <h1>Goals Made Today</h1>
     <%= render partial: 'goals_list', locals: { goals: @goals } %>
   </div>
 </section>

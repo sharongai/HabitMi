@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.1.5'
 
+gem 'better_errors'
+gem 'binding_of_caller'
 gem 'devise'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'faker'

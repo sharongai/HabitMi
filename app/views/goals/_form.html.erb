@@ -1,0 +1,22 @@
+<%= form_for @goal, html: { class: 'goals-form' } do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'u-full-width' %>
+
+  <%= f.label :start_date %>
+  <%= f.date_field :start_date %>
+
+  <br><br>
+
+  <div class="categories-list">
+    <h5>Categories</h5>
+    <% Category.all.each do |category| %>
+      <label>
+        <%= check_box_tag 'goal[category_ids][]', category.id %>
+        <span class="label-body"><%= category.name%></span>
+      </label>
+    <% end %>
+  </div>
+
+  <br><br>
+  <%= f.submit class: 'button-primary' %>
+<% end %>
