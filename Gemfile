@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
+ruby '2.1.5'
 
 gem 'devise'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'faker'
+gem 'friendly_id'
 gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
