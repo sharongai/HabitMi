@@ -26,4 +26,10 @@ $(document).ready(function() {
       $('div.goal-results-holder').html(result['html']);
     });
   });
+
+  $("#sign-in-div").hover(function(){
+    $("#sign-in-dropdown").slideDown();
+  },function(){
+    $("#sign-in-dropdown").slideUp();
+  });
 });
