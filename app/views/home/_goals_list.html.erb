@@ -1,0 +1,10 @@
+<div class="row goal-results container">
+  <div class="twelve columns">
+    <% goals = @goals if @goals.present? %>
+    <% if goals.present? %>
+      <% goals.each do |goal| %>
+        <%= render partial: 'goals/goal_card', locals: { goal: goal } %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

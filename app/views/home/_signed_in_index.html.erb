@@ -9,11 +9,7 @@
     </div>
   </div>
 
-  <div class="row goal-results container">
-    <div class="twelve columns">
-      <% @goals.each do |goal| %>
-        <%= render partial: 'goals/goal_card', locals: { goal: goal } %>
-      <% end %>
-    </div>
+  <div class="goal-results-holder">
+    <%= render partial: 'goals_list', locals: { goals: @goals } %>
   </div>
 </section>

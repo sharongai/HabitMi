@@ -11,4 +11,17 @@ class HomeController < ApplicationController
 
   def contact_us
   end
+
+  def search_goals
+    respond_to do |format|
+      @goals = Goal.search_by_title(params[:goal_title])
+
+      format.json do
+        render json: {
+          html: render_to_string(template: 'home/_goals_list.html.erb',
+                                 layout: false)
+        }
+      end
+    end
+  end
 end

@@ -21,9 +21,9 @@ $(document).ready(function() {
     }
   });
 
-  $('input#goal_search').on('change', function() {
-    $.get('/goals', { goal_title: $(this).val() }, function(result) {
-      console.log(result);
+  $('input#goal_search').on('keyup', function() {
+    $.get('/search-goals', { goal_title: $(this).val() }, function(result) {
+      $('div.goal-results-holder').html(result['html']);
     });
   });
 });

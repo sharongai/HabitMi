@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get '/about-us' => 'home#about_us'
   get '/contact-us' => 'home#contact_us'
-  get '/peoplesgoals'=> 'home#peoplesgoals'
+  get '/search-goals' => 'home#search_goals'
 
   resources :goals
 
