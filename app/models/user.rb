@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  extend FriendlyId
+  friendly_id :full_name, use: :slugged
+
   has_many :selected_categories
   has_many :categories, through: :selected_categories
 

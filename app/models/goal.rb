@@ -2,6 +2,9 @@ class Goal < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search_by_title, against: :title
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   belongs_to :user
   has_many :goal_categories
   has_many :categories, through: :goal_categories
