@@ -1,5 +1,8 @@
 ul.nav-dropdown {
 	display:none;
 	position:absolute;
-	top:25px;
+	top:0px;
+	padding-top:25px;
+	z-index: 2;
 }
+
