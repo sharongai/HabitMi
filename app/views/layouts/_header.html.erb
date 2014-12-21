@@ -7,7 +7,7 @@
         <!--   <li><%= link_to 'Edit Profile', edit_user_registration_path %></li> -->
         <!--   <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li> -->
         <!-- </ul> -->
-        <%= link_to "Welcome #{current_user.full_name}", '#' %> |
+        Welcome <%= current_user.full_name %> |
         <%= link_to 'Edit Profile', edit_user_registration_path %> |
         <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
       <% else %>

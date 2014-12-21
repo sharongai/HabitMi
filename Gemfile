@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.5'
+ruby '2.1.3'
 
 gem 'better_errors'
 gem 'binding_of_caller'
@@ -12,6 +12,7 @@ gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'omniauth-facebook'
+gem 'paperclip', '~> 4.2'
 gem 'pg'
 gem 'pg_search'
 gem 'rails', '4.1.8'
