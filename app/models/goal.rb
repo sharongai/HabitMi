@@ -9,6 +9,7 @@ class Goal < ActiveRecord::Base
   has_many :participants, through: :participations, source: :user,
     class_name: 'User'
 
+  validates :user, presence: true
   validates :title, presence: true
   validates :start_date, presence: true
 

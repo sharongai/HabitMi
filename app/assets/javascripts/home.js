@@ -20,4 +20,10 @@ $(document).ready(function() {
         break;
     }
   });
+
+  $('input#goal_search').on('change', function() {
+    $.get('/goals', { goal_title: $(this).val() }, function(result) {
+      console.log(result);
+    });
+  });
 });

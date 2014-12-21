@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/contact-us' => 'home#contact_us'
   get '/peoplesgoals'=> 'home#peoplesgoals'
 
+  resources :goals
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
