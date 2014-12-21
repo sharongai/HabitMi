@@ -81,7 +81,7 @@ RSpec.describe GoalsController, :type => :controller do
 
       it 'should render new template' do
         @invalid_create_method.call
-        expect(response).to render_template('new')
+        expect(response).to render_template(:new)
       end
 
       it 'should not create new Goal' do
