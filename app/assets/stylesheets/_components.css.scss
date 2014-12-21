@@ -6,3 +6,8 @@ ul.nav-dropdown {
 	z-index: 2;
 }
 
+#sign-in-div:hover {
+	ul.nav-dropdown {
+		display: block;
+	}
+}

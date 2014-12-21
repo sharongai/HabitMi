@@ -27,9 +27,4 @@ $(document).ready(function() {
     });
   });
 
-  $("#sign-in-div").hover(function(){
-    $("#sign-in-dropdown").slideDown();
-  },function(){
-    $("#sign-in-dropdown").slideUp();
-  });
 });
