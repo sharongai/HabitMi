@@ -1,9 +1,12 @@
-<div class="goal-card">
-  <div class="row">
-    <div class="two columns">
-    </div>
-    <div class="ten columns">
-      <%= goal.title %>
+<%= link_to goal_path(goal), class: 'goal-card-link' do %>
+  <div class="goal-card">
+    <div class="row">
+      <div class="twelve columns">
+        <%= goal.title %>
+        <span class="u-pull-right">
+          <%= goal.participants.count %> Members
+        </span>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

@@ -1,10 +1,7 @@
 FactoryGirl.define do
   factory :goal do
-    user nil
-title "MyString"
-start_date "2014-12-16 21:16:28"
-end_date "2014-12-16 21:16:28"
-category nil
+    association :user, factory: :user, strategy: :create
+    title Faker::Hacker.noun
+    start_date DateTime.now + (1..5).to_a.sample.days
   end
-
 end

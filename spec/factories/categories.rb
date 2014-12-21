@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :category do
-    name "MyString"
+    name Faker::Hacker.noun
   end
-
 end

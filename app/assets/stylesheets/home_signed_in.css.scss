@@ -1,14 +1,32 @@
 section.home-page-signed-in {
+  margin-top: -20px;
+
   div.goal-search {
-    padding-top: 50px;
-    text-align: center;
+    background-color: $type-aqua-blue;
 
-    span {
-      font-size: 230%;
-    }
+    div.container {
+      padding-top: 50px;
+      padding-bottom: 50px;
+      text-align: center;
 
-    input {
-      font-size: 230%;
+      div {
+        h1 {
+          color: white;
+          font-size: 270%;
+        }
+
+        span {
+          color: white;
+          font-size: 125%;
+        }
+
+        input {
+          width: 80%;
+        }
+      }
     }
+  }
+
+  div.goal-results {
   }
 }

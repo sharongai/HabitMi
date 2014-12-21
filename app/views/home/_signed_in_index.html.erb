@@ -1,8 +1,19 @@
 <section class="home-page-signed-in">
-  <div class="row container">
-    <div class="twelve columns goal-search">
-      <span>I want to</span>
-      <%= text_field_tag :goal_search, nil, class: 'no-border' %>
+  <div class="row goal-search">
+    <div class="container">
+      <div class="twelve columns">
+        <h1>Start Your Goal Today.</h1>
+        <span>I want to</span>
+        <%= text_field_tag :goal_search, nil, class: 'u-full-width' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row goal-results container">
+    <div class="twelve columns">
+      <% @goals.each do |goal| %>
+        <%= render partial: 'goals/goal_card', locals: { goal: goal } %>
+      <% end %>
     </div>
   </div>
 </section>
