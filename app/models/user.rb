@@ -16,6 +16,11 @@ class User < ActiveRecord::Base
   has_many :participating_goals, through: :participations, source: :goal,
     class_name: 'Goal'
 
+  has_attached_file :profile_picture
+  validates_attachment :profile_picture,
+    content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/gif',
+                                   'image/png'] }, size: { in: 0..2.megabytes }
+
   validates :first_name, presence: true
   validates :last_name, presence: true
 

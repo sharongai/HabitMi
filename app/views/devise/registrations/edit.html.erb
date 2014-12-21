@@ -35,6 +35,11 @@
               class: 'u-full-width' %>
           </div>
 
+          <%= f.label :profile_picture %>
+          <%= f.file_field :profile_picture %>
+
+          <br><br>
+
           <div><%= f.submit "Update", class: 'button-primary' %></div>
         <% end %>
 
