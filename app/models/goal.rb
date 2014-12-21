@@ -19,6 +19,17 @@ class Goal < ActiveRecord::Base
   before_save :set_end_date
   after_create :add_user_as_participant
 
+  scope :started, -> { where 'start_date < ?', DateTime.now }
+  scope :not_started, -> { where 'start_date >= ?', DateTime.now }
+
+  def started?
+    self.start_date < DateTime.now
+  end
+
+  def days_left
+    (DateTime.now.to_date - self.start_date.to_date).to_i
+  end
+
   private
 
   def set_end_date

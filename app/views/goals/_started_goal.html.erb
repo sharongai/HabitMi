@@ -1,0 +1,23 @@
+<section class="started-goal">
+  <div class="goal-info-box container">
+    <div class="row goal-info">
+      <div class="twelve columns">
+        <h1>In <%= @goal.days_left %> days...</h1>
+        <h2>I want to <%= @goal.title %>.</h2>
+      </div>
+    </div>
+
+    <div class="goal-participants">
+      <p><%= @goal.participants.count %> Members</p>
+      <ul>
+        <% @goal.participants.each do |participant| %>
+          <% if participant.profile_picture.blank? %>
+            <li><img><%= fa_icon 'user 3x' %></img></li>
+          <% else %>
+            <li><%= image_tag participant.profile_picture.url %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</section>
