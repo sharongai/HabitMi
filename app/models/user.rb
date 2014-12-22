@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :selected_categories
   has_many :categories, through: :selected_categories
-
+  has_many :vote_logs
   has_many :goals
   has_many :participations
   has_many :participating_goals, through: :participations, source: :goal,
@@ -44,5 +44,19 @@ class User < ActiveRecord::Base
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def voted?(goal)
+    vote_log = vote_logs.find_by(
+      created_at: Time.now.beginning_of_day..Time.now.end_of_day,
+      vouched: false)
+    vote_log.present? && vote_log.participation.goal == goal
+  end
+
+  def vouched?(goal)
+    vote_log = vote_logs.find_by(
+      created_at: Time.now.beginning_of_day..Time.now.end_of_day,
+      vouched: true)
+    vote_log.present? && vote_log.participation.goal == goal
   end
 end

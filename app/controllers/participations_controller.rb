@@ -13,6 +13,8 @@ class ParticipationsController < ApplicationController
     @participation = Participation.find(params[:id])
     @participation.score += 100
     @participation.save
+    @participation.vote_logs.create(user: current_user, voucher: current_user,
+                                    vouched: false)
     redirect_to @participation.goal
   end
 
@@ -20,6 +22,9 @@ class ParticipationsController < ApplicationController
     @participation = Participation.find(params[:id])
     @participation.score += 25
     @participation.save
+    @participation.vote_logs.create(user_id: params[:participant_id],
+                                    voucher: current_user,
+                                    vouched: true)
     redirect_to @participation.goal
   end
 end

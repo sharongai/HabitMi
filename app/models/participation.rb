@@ -1,4 +1,5 @@
 class Participation < ActiveRecord::Base
+  has_many :vote_logs
   belongs_to :user
   belongs_to :goal
 
