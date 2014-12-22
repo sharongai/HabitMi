@@ -21,6 +21,7 @@ gem 'rails_12factor', group: :production
 gem 'sass-rails', '~> 4.0.3'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'uglifier', '>= 1.3.0'
+gem 'unicorn'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -36,6 +37,11 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development do
   gem 'byebug'
+  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails', '~> 1.1.0'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-cookbook', require: false
   gem 'puma'
   gem 'spring'
 end
