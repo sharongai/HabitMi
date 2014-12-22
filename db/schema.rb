@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20141222022133) do
     t.integer  "goal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "score"
+    t.integer  "score",      default: 0
   end
 
   add_index "participations", ["goal_id"], name: "index_participations_on_goal_id", using: :btree

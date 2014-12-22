@@ -8,4 +8,11 @@ class ParticipationsController < ApplicationController
     Participation.find_by(goal_id: params[:goal_id], user: current_user).destroy
     redirect_to Goal.find(params[:goal_id])
   end
+
+  def score
+    @participation = Participation.find(params[:id])
+    @participation.score += 100
+    @participation.save
+    redirect_to @participation.goal
+  end
 end

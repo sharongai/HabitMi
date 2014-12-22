@@ -49,7 +49,13 @@
           <%= link_to 'Join Goal', participations_path(goal_id: @goal.id),
             class: 'button button-primary', method: :post %>
         <% end %>
-        <%= link_to 'Track Goal', '#', class: 'button' %>
+
+        <% if current_user.participations.pluck(:goal_id).include? @goal.id %>
+          <%= link_to 'I did it',
+            score_participation_path(
+              current_user.participations.find_by(goal_id: @goal.id)),
+            class: 'button', method: :post %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -58,6 +64,25 @@
     <div class="row">
       <div class="seven columns">
         <h1>High Scores</h1>
+        <% @goal.participations.order('score DESC').map(&:user).each do |participant| %>
+          <div class="row user-score-card">
+            <div class="two columns">
+              <% if participant.profile_picture.blank? %>
+                <%= fa_icon 'user 3x', class: 'circular' %>
+              <% else %>
+                <%= image_tag participant.profile_picture.url %>
+              <% end %>
+            </div>
+            <div class="ten columns">
+              <ul>
+                <li><%= participant.full_name %></li>
+                <li>
+                  <%= participant.participations.find_by(goal_id: @goal.id).score %> Points
+                </li>
+              </ul>
+            </div>
+          </div>
+        <% end %>
       </div>
       <div class="five columns">
         <div class="categories-list">

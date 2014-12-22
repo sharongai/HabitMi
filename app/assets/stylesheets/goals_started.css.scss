@@ -80,6 +80,22 @@ section.started-goal {
 
   div.goal-status {
     div.row {
+      div.seven.columns {
+        div.user-score-card {
+          img {
+            width: 58px;
+            height: 58px;
+            border-radius: 29px;
+            -webkit-border-radius: 29px;
+            -moz-border-radius: 29px;
+          }
+
+          ul {
+            list-style-type: none;
+          }
+        }
+      }
+
       div.five.columns {
         div.categories-list {
           ul {

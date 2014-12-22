@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 
   resources :goals
 
-  resources :participations
+  resources :participations do
+    post 'score', on: :member
+  end
 
   resources :comments
 
