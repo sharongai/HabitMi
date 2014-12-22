@@ -1,2 +1,56 @@
 <section class="unstarted-goal">
+  <div class="goal-info-box container">
+    <div class="row goal-info">
+      <div class="eight columns">
+        <h1>In 30 days...</h1>
+        <h5>I want to <%= @goal.title %>.</h5>
+      </div>
+      <div class="four columns">
+        <p>Goal Created By</p>
+        <div class="row">
+          <div class="two columns">
+            <% if @goal.user.profile_picture.blank? %>
+              <%= fa_icon 'user 3x', class: 'circular' %>
+            <% else %>
+              <%= image_tag @goal.user.profile_picture.url %>
+            <% end %>
+          </div>
+          <div class="ten columns">
+            <ul>
+              <li><%= @goal.user.full_name %></li>
+              <li>
+                <%= @goal.created_at.strftime('%l:%M%p %a, %b %d, %Y') %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="goal-participants">
+      <div class="participants-list nine columns">
+        <p><%= @goal.participants.count %> Active Members</p>
+        <ul>
+          <% @goal.participants.each do |participant| %>
+            <% if participant.profile_picture.blank? %>
+              <li><%= fa_icon 'user 3x', class: 'circular' %></li>
+            <% else %>
+              <li><%= image_tag participant.profile_picture.url %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="participants-actions three columns">
+        <% if current_user.participations.pluck(:goal_id).include? @goal.id %>
+          <%= link_to 'Leave Goal', participation_path(goal_id: @goal.id),
+            class: 'button button-primary', method: :delete %>
+        <% else %>
+          <%= link_to 'Join Goal', participations_path(goal_id: @goal.id),
+            class: 'button button-primary', method: :post %>
+        <% end %>
+        <%= link_to 'Track Goal', '#', class: 'button' %>
+      </div>
+    </div>
+  </div>
 </section>

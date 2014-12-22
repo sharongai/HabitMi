@@ -1,4 +1,6 @@
 class Goal < ActiveRecord::Base
+  acts_as_commentable
+
   include PgSearch
   pg_search_scope :search_by_title, against: :title
 
@@ -27,7 +29,7 @@ class Goal < ActiveRecord::Base
   end
 
   def days_left
-    (DateTime.now.to_date - self.start_date.to_date).to_i
+    (self.end_date.to_date - self.start_date.to_date).to_i
   end
 
   private

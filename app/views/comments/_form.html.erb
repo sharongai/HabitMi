@@ -1,0 +1,7 @@
+<% @commentable_id = commentable_id if commentable_id.present? %>
+<%= form_for @comment ||= Comment.new do |f| %>
+  <%= f.hidden_field :commentable_id, value: @commentable_id %>
+  <%= f.text_area :body %>
+  <br>
+  <%= f.submit 'Save', class: 'button button-primary' %>
+<% end %>

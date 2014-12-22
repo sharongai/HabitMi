@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.3'
 
+gem 'acts_as_commentable_with_threading'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'devise'

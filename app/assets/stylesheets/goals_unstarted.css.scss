@@ -1,0 +1,80 @@
+section.unstarted-goal {
+  div.goal-info-box {
+    border: 1px solid LightGray;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 25px 30px 25px 30px;
+
+    div.goal-info {
+      border-bottom: 1px solid LightGray;
+
+      div.eight.columns {
+        h1 {
+          text-transform: uppercase;
+        }
+
+        h5 {
+          color: $type-aqua-blue;
+        }
+      }
+
+      div.four.columns {
+        div.row {
+          div.two.columns {
+            i {
+              position: relative;
+              right: 10px;
+            }
+          }
+
+          div.ten.columns {
+            ul {
+              list-style-type: none;
+
+              li {
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    div.goal-participants {
+      div.participants-list {
+        margin-left: 0;
+
+        ul {
+          list-style-type: none;
+
+          li {
+            display: inline;
+            margin-right: 10px;
+
+            i {
+              position: relative;
+              bottom: 13px;
+            }
+
+            img {
+              width: 58px;
+              height: 58px;
+              border-radius: 29px;
+              -webkit-border-radius: 29px;
+              -moz-border-radius: 29px;
+            }
+          }
+        }
+      }
+
+      div.participants-actions {
+        position: relative;
+        top: 25px;
+
+        a {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
