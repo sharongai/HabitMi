@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :participations do
     post 'score', on: :member
+    post 'vouch', on: :member
   end
 
   resources :comments

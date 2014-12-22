@@ -15,4 +15,11 @@ class ParticipationsController < ApplicationController
     @participation.save
     redirect_to @participation.goal
   end
+
+  def vouch
+    @participation = Participation.find(params[:id])
+    @participation.score += 25
+    @participation.save
+    redirect_to @participation.goal
+  end
 end

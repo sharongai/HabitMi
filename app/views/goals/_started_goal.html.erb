@@ -73,13 +73,21 @@
                 <%= image_tag participant.profile_picture.url %>
               <% end %>
             </div>
-            <div class="ten columns">
+            <div class="four columns">
               <ul>
                 <li><%= participant.full_name %></li>
                 <li>
                   <%= participant.participations.find_by(goal_id: @goal.id).score %> Points
                 </li>
               </ul>
+            </div>
+            <div class="six columns">
+              <% if current_user != participant %>
+                <%= link_to 'Vouch',
+                  vouch_participation_path(
+                    participant.participations.find_by(goal_id: @goal.id)),
+                  class: 'button button-primary u-pull-right', method: :post %>
+              <% end %>
             </div>
           </div>
         <% end %>
