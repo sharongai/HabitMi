@@ -1,6 +1,8 @@
 class Goal < ActiveRecord::Base
   acts_as_commentable
 
+  searchkick
+
   include PgSearch
   pg_search_scope :search_by_title, against: :title
 

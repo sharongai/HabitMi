@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
   def index
     if user_signed_in?
-      @goals = Goal.where(
-        created_at: Time.now.beginning_of_day..Time.now.end_of_day)
+      @goals = Goal.search '*',
+        where: { created_at: Time.now.beginning_of_day..Time.now.end_of_day }
     end
   end
 
