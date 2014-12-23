@@ -121,14 +121,6 @@ GEM
     dotenv (1.0.2)
     dotenv-rails (1.0.2)
       dotenv (= 1.0.2)
-    elasticsearch (1.0.4)
-      elasticsearch-api (= 1.0.4)
-      elasticsearch-transport (= 1.0.4)
-    elasticsearch-api (1.0.4)
-      multi_json
-    elasticsearch-transport (1.0.4)
-      faraday
-      multi_json
     erubis (2.7.0)
     execjs (2.2.2)
     factory_girl (4.5.0)
@@ -283,10 +275,6 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    searchkick (0.8.2)
-      activemodel
-      elasticsearch (>= 1)
-      hashie
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
     simplecov (0.9.1)
@@ -365,7 +353,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
-  searchkick
   shoulda-matchers
   simplecov
   spring
