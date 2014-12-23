@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :find_goal, only: :show
+  before_action :find_goal, only: [:show, :invite]
 
   def show
   end
@@ -16,12 +16,15 @@ class GoalsController < ApplicationController
         @goal.goal_categories.create(category_id: category_id)
       end
 
-      redirect_to @goal
+      redirect_to invite_goal_path(@goal)
     else
       render :new
     end
   end
 
+  def invite
+
+  end
   private
 
   def goal_params

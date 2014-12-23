@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   get '/contact-us' => 'home#contact_us'
   get '/search-goals' => 'home#search_goals'
 
-  resources :goals
+  resources :goals do
+    get 'invite', on: :member
+  end
+
 
   resources :participations do
     post 'score', on: :member

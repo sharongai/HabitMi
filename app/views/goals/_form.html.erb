@@ -1,11 +1,32 @@
 <%= form_for @goal, html: { class: 'goals-form' } do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title, class: 'u-full-width' %>
+  <div class="first_row">
+  <div class="surtitle">IN 30 DAYS...</div>
+  <%= f.date_field :start_date %></div>
 
-  <%= f.label :start_date %>
-  <%= f.date_field :start_date %>
+  <%= f.text_field :title, class: 'u-full-width', placeholder: 'What\'s your goal?'%>
+  <span id="edit_title">Edit</span>
 
-  <br><br>
+  <hr/>
+  <div class="main_content">
+  <div class="invite_strangers">
+    <% User.where.not(id: current_user.id).each do |user| %>
+      <div class="user_strange">
+        <div>
+          <div class="add_user">+</div>
+          <div class="user_thumbnail">
+            <img src="<% user.profile_picture.url%>" alt="">
+          </div>
+        </div>
+        <div class="user_name">
+          <div class="user_first_name"><%= user.first_name %></div>
+          <div class="user_last_name"><%= user.last_name %></div>
+        </div>
+      </div>
+    <% end %>
+    <div class="more_stranger">Recommend More</div>
+  </div>
+
+
 
   <div class="categories-list">
     <h5>Categories</h5>
@@ -16,7 +37,7 @@
       </label>
     <% end %>
   </div>
-
+</div>
   <br><br>
   <%= f.submit class: 'button-primary' %>
 <% end %>

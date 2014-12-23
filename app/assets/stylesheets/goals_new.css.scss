@@ -1,2 +1,92 @@
 section.new-goal {
 }
+.goals-form {
+	margin: 50px;
+	box-shadow: 0 0 15px #CCC;
+	padding: 50px;
+}
+.surtitle{
+	width: 50%;
+	display: inline-block;
+}
+#goal_start_date{
+	float:right;
+}
+#goal_title{
+	margin-top: 30px;
+	font-size: 30px;
+	padding:0;
+	height: 50px;
+	color: $type-aqua-blue;
+	border: 0;
+}
+#edit_title{
+	cursor:pointer;
+}
+.goals-form{
+	display: flex;
+	flex-wrap:wrap;
+	* {
+		display: flex;
+		flex-wrap:wrap;
+	}
+	.first_row {
+		width: 100%;
+		justify-content: space-between;
+	}
+	.main_content{
+		flex-wrap:nowrap;
+		.invite_strangers {
+			display: flex;
+		    flex-wrap: wrap;
+		    width: 50%;
+			* {
+				display: flex;
+		    	flex-wrap: wrap;
+			}
+		    .user_strange{
+				width:50%;
+				display:flex;
+				align-items:center;
+				.add_user{
+					width: 20px;
+					height: 50px;
+					font-size: 30px;
+					margin-right: 30px;
+					cursor: pointer;
+					color: $type-aqua-blue;
+				}
+				.user_thumbnail {
+					width:50px;
+					height:50px;
+					background-color: $type-aqua-blue;
+					border-radius: 25px;
+					margin-right:30px;
+				}
+				.user_name {
+					justify-content: space-around;
+					margin: 10px 0;
+					div {
+						margin-right: 10px;
+					}
+				}
+			}
+			.more_stranger{
+				color: $type-aqua-blue;
+				font-size: 20px;
+				cursor: pointer;
+				width: 100%;
+			}
+		}
+		.categories-list{
+			align-content: flex-start;
+			h5{
+				width: 100%;
+			}
+			label{
+				width:50%;
+			}
+		}
+	}
+}
+
