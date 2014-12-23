@@ -52,14 +52,15 @@ class User < ActiveRecord::Base
   def voted?(goal)
     vote_log = vote_logs.find_by(
       created_at: Time.now.beginning_of_day..Time.now.end_of_day,
-      vouched: false)
-    vote_log.present? && vote_log.participation.goal == goal
+      vouched: false, user: self, voucher: self)
+    vote_log.present? && (vote_log.participation.goal == goal)
   end
 
-  def vouched?(goal)
+  def vouched?(user, goal)
     vote_log = vote_logs.find_by(
       created_at: Time.now.beginning_of_day..Time.now.end_of_day,
-      vouched: true)
-    vote_log.present? && vote_log.participation.goal == goal
+      vouched: true, user: self, voucher: user)
+
+    vote_log.present? && (vote_log.participation.goal == goal)
   end
 end
