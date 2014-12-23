@@ -80,6 +80,12 @@ test:
 #
 production:
   <<: *default
+  database: habit_mi_staging
+  username: habit_mi
+  password: <%= ENV['HABIT_MI_DATABASE_PASSWORD'] %>
+
+production:
+  <<: *default
   database: habit_mi_production
   username: habit_mi
   password: <%= ENV['HABIT_MI_DATABASE_PASSWORD'] %>
