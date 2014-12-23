@@ -51,7 +51,10 @@
         <% end %>
 
         <% if current_user.participations.pluck(:goal_id).include? @goal.id %>
-          <% unless current_user.voted?(@goal) %>
+          <% if current_user.voted?(@goal) %>
+            <%= link_to 'You did it',
+              '#', class: 'button' %>
+          <% else %>
             <%= link_to 'I did it',
               score_participation_path(
                 current_user.participations.find_by(goal_id: @goal.id)),
@@ -84,12 +87,15 @@
               </ul>
             </div>
             <div class="six columns">
-              <% if (current_user != participant) %>
+              <% if !(current_user == participant) &&
+                  !participant.vouched?(current_user, @goal) %>
                 <%= link_to 'Vouch',
                   vouch_participation_path(
                     participant.participations.find_by(goal_id: @goal.id),
                     participant_id: participant.id),
                   class: 'button button-primary u-pull-right', method: :post %>
+              <% elsif (current_user != participant) && participant.vouched?(current_user, @goal) %>
+                <%= link_to 'Vouched', '#', class: 'button u-pull-right' %>
               <% end %>
             </div>
           </div>
