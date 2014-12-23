@@ -16,7 +16,10 @@ class User < ActiveRecord::Base
   has_many :participating_goals, through: :participations, source: :goal,
     class_name: 'Goal'
 
-  has_attached_file :profile_picture
+  has_attached_file :profile_picture,
+    styles: { medium: "300x300>", thumb: "100x100>" },
+    default_url: "/profile_pictures/:style/user_icon.png"
+
   validates_attachment :profile_picture,
     content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/gif',
                                    'image/png'] }, size: { in: 0..2.megabytes }

@@ -16,15 +16,12 @@ class GoalsController < ApplicationController
         @goal.goal_categories.create(category_id: category_id)
       end
 
-      redirect_to invite_goal_path(@goal)
+      redirect_to @goal
     else
       render :new
     end
   end
 
-  def invite
-
-  end
   private
 
   def goal_params
