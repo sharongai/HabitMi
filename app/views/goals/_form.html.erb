@@ -12,9 +12,9 @@
     <% User.where.not(id: current_user.id).each do |user| %>
       <div class="user_strange">
         <div>
-          <div class="add_user">+</div>
+          <div class="add_user"></div>
           <div class="user_thumbnail">
-            <img src="<% user.profile_picture.url%>" alt="">
+            <img src="<%= user.profile_picture.url(:thumb)%>" alt="">
           </div>
         </div>
         <div class="user_name">
