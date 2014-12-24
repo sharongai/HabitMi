@@ -6,6 +6,8 @@ class CommentsController < ApplicationController
 
     if @comment.save
       redirect_to @goal
+    else
+      render 'goals/show'
     end
   end
 end
