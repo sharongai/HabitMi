@@ -5,8 +5,10 @@ class ParticipationsController < ApplicationController
   end
 
   def destroy
-    Participation.find_by(goal_id: params[:goal_id], user: current_user).destroy
-    redirect_to Goal.find(params[:goal_id])
+    @participation = Participation.find(params[:id])
+    @goal = @participation.goal
+    @participation.destroy
+    redirect_to @goal
   end
 
   def score

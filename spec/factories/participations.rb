@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :participation do
-    user nil
-goal nil
+    association :user, factory: :user, strategy: :create
+    association :goal, factory: :goal, strategy: :create
   end
-
 end
