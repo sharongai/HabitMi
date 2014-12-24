@@ -1,5 +1,5 @@
 class Participation < ActiveRecord::Base
-  has_many :vote_logs
+  has_many :vote_logs, dependent: :destroy
   belongs_to :user
   belongs_to :goal
 

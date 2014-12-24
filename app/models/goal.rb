@@ -8,9 +8,9 @@ class Goal < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   belongs_to :user
-  has_many :goal_categories
+  has_many :goal_categories, dependent: :destroy
   has_many :categories, through: :goal_categories
-  has_many :participations
+  has_many :participations, dependent: :destroy
   has_many :participants, through: :participations, source: :user,
     class_name: 'User'
 
@@ -35,7 +35,7 @@ class Goal < ActiveRecord::Base
   private
 
   def set_end_date
-    self.end_date = self.start_date + 30.days
+    self.end_date = self.start_date + 66.days
   end
 
   def add_user_as_participant

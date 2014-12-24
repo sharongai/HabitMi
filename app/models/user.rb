@@ -8,11 +8,11 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :full_name, use: :slugged
 
-  has_many :selected_categories
+  has_many :selected_categories, dependent: :destroy
   has_many :categories, through: :selected_categories
-  has_many :vote_logs
+  has_many :vote_logs, dependent: :destroy
   has_many :goals
-  has_many :participations
+  has_many :participations, dependent: :destroy
   has_many :participating_goals, through: :participations, source: :goal,
     class_name: 'Goal'
 
