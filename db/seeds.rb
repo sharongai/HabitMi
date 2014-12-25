@@ -1,3 +1,9 @@
+# Create Categories
+['Self Improvement', 'Studying', 'Being on Time', 'New Diet', 'New Diet',
+ 'Exercise', 'Learn a New Skill'].each do |category_name|
+  Category.create name: category_name
+end
+
 # Create Users
 chris = User.create email: 'chris@gmail.com',
                     first_name: 'Chris',
@@ -32,10 +38,16 @@ sharon = User.create email: 'sharon@gmail.com',
               password_confirmation: 'password'
 end
 
-# Create Categories
-['Health', 'Fitness', 'Social', 'Self-Improvement', 'Relationships',
- 'Education'].each do |category_name|
-  Category.create name: category_name
+# Create Selected Categories for Users
+User.all.each do |user|
+  (1..3).to_a.sample.times do
+    category = Category.all.sample
+    until user.categories.exclude? category
+      category = Category.all.sample
+    end
+    user.categories << category
+    user.save
+  end
 end
 
 # Create Goals
@@ -48,6 +60,18 @@ end
     new_category =
       Category.where.not(id: goal.goal_categories.pluck(:category_id)).sample
     goal.goal_categories.create(category: new_category)
+  end
+end
+
+# Create Goal Categories
+Goal.all.each do |goal|
+  (1..3).to_a.sample.times do
+    category = Category.all.sample
+    until goal.categories.exclude? category
+      category = Category.all.sample
+    end
+    goal.categories << category
+    goal.save
   end
 end
 
