@@ -15,10 +15,13 @@ Rails.application.routes.draw do
   get '/search-goals' => 'home#search_goals'
 
   resources :goals
+  get 'show_more_strangers' => 'goals#show_more_strangers'
 
   resources :participations do
-    post 'score', on: :member
-    post 'vouch', on: :member
+    member do
+      post 'score'
+      post 'vouch'
+    end
   end
 
   resources :comments

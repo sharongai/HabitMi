@@ -1,8 +1,32 @@
 $(document).ready(function() {
-	$("#edit_title").click(function(){
-		$("#goal_title").focus();
-	});
-	$(".add_user").click(function(e){
-		$(e.target).toggleClass("added");
-	});
+	var toggleCheckbox = function() {
+    $('div.invite-user-checkbox').on('click', function(e){
+      $(this).toggleClass('added');
+      var userId = $(this).data('user-id');
+      if ($('input[type="checkbox"]#' + userId).checked) {
+        $('input[type="checkbox"]#' + userId).prop('checked', false);
+      } else {
+        $('input[type="checkbox"]#' + userId).prop('checked', true);
+      }
+    });
+	}
+
+  toggleCheckbox();
+
+  $(document).on('click', 'div.recommend-more.strangers a', function(e) {
+    e.preventDefault();
+    toggleCheckbox();
+
+    var data = {
+      page: $(this).data('page'),
+      user_ids: $(this).data('user-ids')
+    };
+
+    $.get('/show_more_strangers', data, function(response) {
+      $('div.recommend-more.strangers').remove();
+      $('div.invite-strangers').append(response['html']);
+
+      toggleCheckbox();
+    });
+  });
 });

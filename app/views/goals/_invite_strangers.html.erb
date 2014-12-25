@@ -1,0 +1,14 @@
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= render partial: 'users/user_card', locals: { user: user }%>
+    </li>
+  <% end %>
+</ul>
+
+<div class="recommend-more strangers">
+  <%= link_to 'Recommend More',
+    show_more_strangers_path, class: 'recommend-more',
+      data: { page: params[:page] }
+   %>
+</div>

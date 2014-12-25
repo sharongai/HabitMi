@@ -1,43 +1,46 @@
 <%= form_for @goal, html: { class: 'goals-form' } do |f| %>
-  <div class="first_row">
-  <div class="surtitle">IN 66 DAYS...</div>
-  <%= f.date_field :start_date %></div>
+  <div class="row first-row">
+    <div class="twelve columns">
+      <%= image_tag User.first.profile_picture.url(:thumb) %>
+      <h1 class="u-pull-left">In 66 days...</h1>
+      <p class="u-pull-right"><%= f.date_field :start_date %></h1>
+    </div>
+  </div>
 
-  <%= f.text_field :title, class: 'u-full-width', placeholder: 'What\'s your goal?'%>
-  <span id="edit_title">Edit</span>
+  <div class="row second-row">
+    <div class="twelve columns">
+      <%= f.text_field :title, class: 'u-full-width no-border',
+        placeholder: 'What\'s your goal?' %>
+    </div>
+  </div>
 
-  <hr/>
-  <div class="main_content">
-  <div class="invite_strangers">
-    <% User.where.not(id: current_user.id).each do |user| %>
-      <div class="user_strange">
-        <div>
-          <div class="add_user"></div>
-          <div class="user_thumbnail">
-            <img src="<%= user.profile_picture.url(:thumb)%>" alt="">
-          </div>
-        </div>
-        <div class="user_name">
-          <div class="user_first_name"><%= user.first_name %></div>
-          <div class="user_last_name"><%= user.last_name %></div>
-        </div>
+  <div class="row third-row">
+    <div class="seven columns goal-invite-list">
+      <h5>Invite Your Friends</h5>
+      <h5>Invite Strangers</h5>
+      <div class="invite-strangers">
+        <%= render 'invite_strangers' %>
       </div>
-    <% end %>
-    <div class="more_stranger">Recommend More</div>
+    </div>
+    <div class="five columns categories-check-box">
+      <h5>Select Categories</h5>
+      <ul>
+        <% @categories.each do |category| %>
+          <li>
+            <label>
+              <%= check_box_tag 'goal[category_ids][]', category.id %>
+              <span class="label-body"><%= category.name%></span>
+            </label>
+          </li>
+        <% end %>
+      </ul>
+      <br>
+    </div>
   </div>
 
-
-
-  <div class="categories-list">
-    <h5>Categories</h5>
-    <% Category.all.each do |category| %>
-      <label>
-        <%= check_box_tag 'goal[category_ids][]', category.id %>
-        <span class="label-body"><%= category.name%></span>
-      </label>
-    <% end %>
+  <div class="row">
+    <div class="twelve columns">
+      <%= f.submit class: 'button-primary u-pull-right' %>
+    </div>
   </div>
-</div>
-  <br><br>
-  <%= f.submit class: 'button-primary' %>
 <% end %>

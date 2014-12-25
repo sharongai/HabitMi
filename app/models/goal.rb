@@ -13,6 +13,7 @@ class Goal < ActiveRecord::Base
   has_many :participations, dependent: :destroy
   has_many :participants, through: :participations, source: :user,
     class_name: 'User'
+  accepts_nested_attributes_for :goal_categories
 
   validates :user, presence: true
   validates :title, presence: true

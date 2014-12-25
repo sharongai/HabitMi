@@ -1,2 +1,68 @@
 form.goals-form {
+  padding: 50px;
+
+  div.first-row {
+    div.columns {
+      h1 {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  div.second-row {
+    border-bottom: 1px solid LightGray;
+
+    div.columns {
+      input[type="text"] {
+        margin-bottom: 25px;
+        padding: 0;
+        font-size: 220%;
+        height: 110%;
+        color: $type-aqua-blue;
+      }
+    }
+  }
+
+  div.third-row {
+    div.goal-invite-list {
+      margin-bottom: 1em;
+
+      ul {
+        width: 100%;
+        list-style-type: none;
+
+        li {
+          float: left;
+          width: 50%;
+        }
+      }
+
+      div.recommend-more {
+        clear: both;
+
+        a {
+          text-decoration: none;
+          color: $type-aqua-blue;
+        }
+      }
+    }
+
+    div.categories-check-box {
+      margin-bottom: 1em;
+
+      ul {
+        width: 100%;
+        list-style-type: none;
+
+        li {
+          float: left;
+          width: 50%;
+        }
+      }
+
+      br {
+        clear: left;
+      }
+    }
+  }
 }

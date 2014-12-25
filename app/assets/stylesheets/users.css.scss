@@ -1,0 +1,43 @@
+div.user-card {
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  div.invite-user-checkbox {
+    float: left;
+    width: 20px;
+    height: 50px;
+    line-height:50px;
+    font-size: 30px;
+    cursor: pointer;
+    color: $type-aqua-blue;
+    &:after{
+      content: "+"
+    }
+  }
+  div.invite-user-checkbox.added:after{
+    content: "✓";
+    font-size: 20px;
+  }
+
+  div.user-thumbnail {
+    float: left;
+    margin-left: 10px;
+    margin-right: 15px;
+    position: relative;
+    top: 4px;
+  }
+
+  div.user-invite-information {
+    float: left;
+
+    p {
+      margin-bottom: 0;
+
+      &:last-of-type {
+        font-style: italic;
+        color: LightGray;
+      }
+    }
+  }
+}
