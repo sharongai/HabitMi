@@ -38,6 +38,7 @@ gem 'unicorn'
 
 group :development do
   gem 'byebug'
+  gem 'bullet'
   gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-bundler'
   gem 'capistrano-rails', '~> 1.1.0'
