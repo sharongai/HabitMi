@@ -3,7 +3,8 @@
     <div class="twelve columns">
       <%= image_tag User.first.profile_picture.url(:thumb) %>
       <h1 class="u-pull-left">In 66 days...</h1>
-      <p class="u-pull-right"><%= f.date_field :start_date %></h1>
+      <%= f.text_field :start_date, class: 'no-border u-pull-right',
+        placeholder: 'Click for Start Date' %>
     </div>
   </div>
 

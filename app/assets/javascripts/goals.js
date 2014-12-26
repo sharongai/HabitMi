@@ -13,6 +13,8 @@ $(document).ready(function() {
 
   toggleCheckbox();
 
+  $('input#goal_start_date').pickadate();
+
   $(document).on('click', 'div.recommend-more.strangers a', function(e) {
     e.preventDefault();
     toggleCheckbox();
