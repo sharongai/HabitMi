@@ -28,12 +28,28 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
-      # user.image = auth.info.image # assuming the user model has an image
+    found_user = self.find_by(email: auth.info.email)
+
+    if found_user.present?
+      found_user.update_attributes(
+        uid: auth.uid,
+        provider: auth.provider,
+        oauth_token: auth.credentials.token,
+        oauth_expires_at: Time.at(auth.credentials.expires_at)
+      )
+      found_user
+    else
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0,20]
+        user.first_name = auth.info.first_name
+        user.last_name = auth.info.last_name
+        user.uid = auth.uid
+        user.provider = auth.provider
+        user.oauth_token = auth.credentials.token
+        user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+        # user.image = auth.info.image # assuming the user model has an image
+      end
     end
   end
 
