@@ -22,7 +22,10 @@ class GoalsController < ApplicationController
     elsif @goal.save
       params[:category_ids].each { |id| @goal.categories << Category.find(id) }
       params[:user_ids].each do |user_id|
-        UserMailer.delay.invite_people_to_goal(User.find(user_id), @goal)
+        user = User.find(user_id)
+        @goal.participants << user
+        @goal.save
+        UserMailer.delay.invite_people_to_goal(user, @goal)
       end
       redirect_to @goal
     else

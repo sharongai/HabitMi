@@ -50,7 +50,12 @@ RSpec.describe GoalsController, sidekiq: :fake, type: :controller do
   end
 
   describe 'POST create' do
-    before { 3.times { FactoryGirl.create(:category) } }
+    before do
+      3.times do
+        FactoryGirl.create(:category)
+        FactoryGirl.create(:user)
+      end
+    end
 
     context 'with valid params' do
       before do
