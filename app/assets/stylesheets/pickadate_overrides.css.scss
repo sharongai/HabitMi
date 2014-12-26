@@ -1,0 +1,21 @@
+div.picker__box {
+  padding: 1em;
+  table.picker__table {
+    thead {
+      tr {
+        th {
+          text-align: center;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          text-align: center;
+          font-family: "Helvetica Neue", sans-serif;
+        }
+      }
+    }
+  }
+}

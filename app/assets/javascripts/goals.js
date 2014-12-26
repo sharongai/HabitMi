@@ -13,7 +13,7 @@ $(document).ready(function() {
 
   toggleCheckbox();
 
-  $('input#goal_start_date').pickadate();
+  $('input#goal_start_date').pickadate({ min: new Date() });
 
   $(document).on('click', 'div.recommend-more.strangers a', function(e) {
     e.preventDefault();
