@@ -40,7 +40,6 @@ gem 'unicorn'
 # gem 'debugger', group: [:development, :test]
 
 group :development do
-  gem 'byebug'
   gem 'bullet'
   gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-bundler'
@@ -53,6 +52,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'byebug'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
 end

@@ -13,12 +13,10 @@ class GoalsController < ApplicationController
 
   def create
     @goal = current_user.goals.new(goal_params)
-    goal_params[:category_ids].each do |id|
-      @goal.categories << Category.find(id)
-    end
 
     if @goal.save
-      goal_params[:user_ids].each do |user_id|
+      params[:category_ids].each { |id| @goal.categories << Category.find(id) }
+      params[:user_ids].each do |user_id|
         UserMailer.delay.invite_people_to_goal(User.find(user_id), @goal)
       end
       redirect_to @goal
@@ -46,8 +44,7 @@ class GoalsController < ApplicationController
   private
 
   def goal_params
-    params.require(:goal).permit(:title, :start_date, category_ids: [],
-                                 user_ids: [])
+    params.require(:goal).permit(:title, :start_date)
   end
 
   def find_goal

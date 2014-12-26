@@ -28,7 +28,7 @@
         <% @categories.each do |category| %>
           <li>
             <label>
-              <%= check_box_tag 'goal[category_ids][]', category.id %>
+              <%= check_box_tag 'category_ids[]', category.id %>
               <span class="label-body"><%= category.name%></span>
             </label>
           </li>

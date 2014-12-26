@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe GoalsController, :type => :controller do
+RSpec.describe GoalsController, sidekiq: :fake, type: :controller do
   before do
     @user = FactoryGirl.create(:user)
     sign_in @user
@@ -22,7 +22,11 @@ RSpec.describe GoalsController, :type => :controller do
   end
 
   describe 'GET new' do
-    before { get :new }
+    before do
+      3.times { FactoryGirl.create(:category) }
+      2.times { FactoryGirl.create(:user) }
+      get :new
+    end
 
     it 'should respond with success' do
       expect(response).to be_success
@@ -35,6 +39,14 @@ RSpec.describe GoalsController, :type => :controller do
     it 'should return a new goal that belongs to the signed in user' do
       expect(assigns(:goal).user).to eq @user
     end
+
+    it 'should get all categories' do
+      expect(assigns(:categories).count).to eq 3
+    end
+
+    it 'should get all users without current user' do
+      expect(assigns(:users).count).to eq 2
+    end
   end
 
   describe 'POST create' do
@@ -46,9 +58,10 @@ RSpec.describe GoalsController, :type => :controller do
           post :create,
             goal: {
               title: 'Foo',
-              start_date: DateTime.now,
-              category_ids: Category.pluck(:id).to_a
-            }
+              start_date: Date.today,
+            },
+            category_ids: Category.pluck(:id),
+            user_ids: User.where.not(id: @user.id).pluck(:id)
         end
       end
 
@@ -73,9 +86,9 @@ RSpec.describe GoalsController, :type => :controller do
           post :create,
             goal: {
               title: nil,
-              start_date: DateTime.now,
-              category_ids: Category.pluck(:id).to_a
-            }
+              start_date: Date.today,
+            },
+            category_ids: Category.pluck(:id).to_a
         end
       end
 
@@ -92,6 +105,21 @@ RSpec.describe GoalsController, :type => :controller do
         expect { @invalid_create_method.call }.
           to_not change(GoalCategory, :count)
       end
+    end
+  end
+
+  describe 'GET show_more_strangers' do
+    before do
+      3.times { FactoryGirl.create(:user) }
+      get :show_more_strangers, page: 0, format: :json
+    end
+
+    it 'should respond with success' do
+      expect(response).to be_success
+    end
+
+    it 'should return 3 users' do
+      expect(assigns(:users).count).to eq 3
     end
   end
 end

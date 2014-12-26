@@ -9,6 +9,7 @@ require 'shoulda/matchers'
 require 'paperclip/matchers'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+require 'sidekiq/testing'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -79,5 +80,9 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+  end
+
+  config.before(:each) do
+    Sidekiq::Worker.clear_all
   end
 end

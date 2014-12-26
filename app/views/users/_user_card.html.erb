@@ -1,5 +1,5 @@
 <div class="user-card">
-    <%= check_box_tag 'goal[user_ids][]', user.id, false, id: user.id %>
+    <%= check_box_tag 'user_ids[]', user.id, false, id: user.id %>
     <div class="invite-user-checkbox" data-user-id=<%= user.id %>></div>
     <div class="user-thumbnail">
       <%= image_tag user.profile_picture.url(:thumb),
