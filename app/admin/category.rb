@@ -14,7 +14,7 @@ ActiveAdmin.register Category do
   #   permitted
   # end
 
-  form :html => { :enctype => "multipart/form-data" } do |f|
+  form html: { enctype: 'multipart/form-data' } do |f|
     f.inputs 'Details' do
       f.input :name
       f.input :icon_image, as: :file
