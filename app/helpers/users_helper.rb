@@ -5,11 +5,7 @@ module UsersHelper
 
   def user_active_goals(user)
     if user.goals.count > 0
-      if user.goals.count > 1
-        "Active in #{user.goals.count} #{'Goal'.pluralize}"
-      else
-        "Active in 1 Goal"
-      end
+      "Active in #{pluralize(user.goals.count, 'Goal')}"
     else
       '0 Goals'
     end

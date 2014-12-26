@@ -1,4 +1,5 @@
 <%= form_for @goal, html: { class: 'goals-form' } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
   <div class="row first-row">
     <div class="twelve columns">
       <%= image_tag User.first.profile_picture.url(:thumb) %>

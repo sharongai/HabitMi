@@ -14,7 +14,12 @@ class GoalsController < ApplicationController
   def create
     @goal = current_user.goals.new(goal_params)
 
-    if @goal.save
+    if params[:category_ids].blank?
+      @goal.errors.add(:base, 'You need to select Categories')
+      @categories = Category.all
+      @users = User.where.not(id: current_user.id).page(params[:page]).per(4)
+      render :new
+    elsif @goal.save
       params[:category_ids].each { |id| @goal.categories << Category.find(id) }
       params[:user_ids].each do |user_id|
         UserMailer.delay.invite_people_to_goal(User.find(user_id), @goal)

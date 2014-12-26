@@ -106,6 +106,32 @@ RSpec.describe GoalsController, sidekiq: :fake, type: :controller do
           to_not change(GoalCategory, :count)
       end
     end
+
+    context 'when comments are not selected' do
+      before do
+        @invalid_create_method = -> do
+          post :create,
+            goal: {
+              title: nil,
+              start_date: Date.today,
+            }
+        end
+      end
+
+      it 'should render new template' do
+        @invalid_create_method.call
+        expect(response).to render_template(:new)
+      end
+
+      it 'should not create new Goal' do
+        expect { @invalid_create_method.call }.to_not change(Goal, :count)
+      end
+
+      it 'should not create any GoalCategories' do
+        expect { @invalid_create_method.call }.
+          to_not change(GoalCategory, :count)
+      end
+    end
   end
 
   describe 'GET show_more_strangers' do

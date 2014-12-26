@@ -15,6 +15,9 @@ Bundler.require(*Rails.groups)
 
 module HabitMi
   class Application < Rails::Application
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+      html_tag
+    }
     config.assets.paths << Rails.root.join('vendor','assets','bower_components')
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
