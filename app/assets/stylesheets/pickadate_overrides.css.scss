@@ -1,9 +1,11 @@
 div.picker__box {
-  padding: 1em;
+  padding: 0 1em;
+
   table.picker__table {
     thead {
       tr {
         th {
+          border: none;
           text-align: center;
         }
       }
@@ -12,10 +14,19 @@ div.picker__box {
     tbody {
       tr {
         td {
+          border: none;
           text-align: center;
           font-family: 'Helvetica Neue', sans-serif;
         }
       }
+    }
+  }
+
+  div.picker__footer {
+    button {
+      height: 52px;
+      border-radius: 0;
+      border: none;
     }
   }
 }
