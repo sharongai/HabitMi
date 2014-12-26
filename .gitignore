@@ -25,6 +25,7 @@
 coverage/
 public/system
 .env
+*.rdb
 
 Capfile
 config/deploy.rb
