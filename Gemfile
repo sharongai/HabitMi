@@ -20,6 +20,7 @@ gem 'pg'
 gem 'pg_search'
 gem 'rails', '4.1.8'
 gem 'rails_12factor', group: :production
+gem 'sidekiq'
 gem 'sass-rails', '~> 4.0.3'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'uglifier', '>= 1.3.0'
@@ -42,9 +43,10 @@ group :development do
   gem 'bullet'
   gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-bundler'
+  gem 'capistrano-cookbook', require: false
   gem 'capistrano-rails', '~> 1.1.0'
   gem 'capistrano-rbenv', '~> 2.0'
-  gem 'capistrano-cookbook', require: false
+  gem 'capistrano-sidekiq'
   gem 'puma'
   gem 'spring'
 end

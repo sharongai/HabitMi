@@ -18,6 +18,9 @@ class GoalsController < ApplicationController
     end
 
     if @goal.save
+      goal_params[:user_ids].each do |user_id|
+        UserMailer.delay.invite_people_to_goal(User.find(user_id), @goal)
+      end
       redirect_to @goal
     else
       @categories = Category.all
@@ -44,7 +47,7 @@ class GoalsController < ApplicationController
 
   def goal_params
     params.require(:goal).permit(:title, :start_date, category_ids: [],
-                                 users: [])
+                                 user_ids: [])
   end
 
   def find_goal
