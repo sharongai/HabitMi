@@ -21,9 +21,9 @@ ActiveAdmin.register User do
     end
 
     def update
-      if params[:model][:password].blank?
-        params[:model].delete("password")
-        params[:model].delete("password_confirmation")
+      if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+        params[:user].delete("password")
+        params[:user].delete("password_confirmation")
       end
       super
     end
