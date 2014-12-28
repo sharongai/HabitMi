@@ -2,15 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="twelve columns">
-        <ul>
+        <ul class="u-pull-left">
           <li><%= link_to 'About Us', about_us_path %></li>
-          <li><%= link_to 'Contact Us', contact_us_path %></li>
+          <li><%= fa_icon 'envelope-o' %> <%= mail_to 'contact.habitmi@gmail.com' %></li>
         </ul>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="twelve columns">
         <p class="u-pull-right"><span class="logo">HabitMi</span> © 2014</p>
       </div>
     </div>

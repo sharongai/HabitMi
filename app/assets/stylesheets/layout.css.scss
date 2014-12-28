@@ -21,14 +21,15 @@ nav {
 }
 
 footer {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 35px;
   background-color: $type-aqua-blue;
   color: white;
 
   ul {
     li {
+      margin-right: 30px;
       list-style: none;
+      display: inline;
 
       a {
         text-decoration: none;
