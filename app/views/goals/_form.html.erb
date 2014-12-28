@@ -2,7 +2,6 @@
   <%= render 'shared/error_messages', object: f.object %>
   <div class="row first-row">
     <div class="twelve columns">
-      <%= image_tag User.first.profile_picture.url(:thumb) %>
       <h1 class="u-pull-left">In 66 days...</h1>
       <%= f.text_field :start_date, class: 'no-border u-pull-right',
         placeholder: 'Click for Start Date' %>
