@@ -1,10 +1,8 @@
 <div class="user-card">
     <%= check_box_tag 'user_ids[]', user.id, false, id: user.id %>
     <div class="invite-user-checkbox" data-user-id=<%= user.id %>></div>
-    <div class="user-thumbnail">
-      <%= image_tag user.profile_picture.url(:thumb),
-        class: user_missing_profile_picture?(
-          user.profile_picture.url(:thumb))  %>
+    <div class=<%= user_missing_profile_picture?(user.profile_picture.url(:thumb)) %>>
+      <%= image_tag user.profile_picture.url(:thumb) %>
     </div>
     <div class="user-invite-information">
       <p><%= user.full_name %></p>
