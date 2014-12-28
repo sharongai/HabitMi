@@ -123,7 +123,7 @@ RSpec.describe ParticipationsController, :type => :controller do
       before do
         @participation = FactoryGirl.create(:participation,
                                             goal: @goal, user: @user)
-        @destroy_method = -> { delete :destroy, id: @participation.id }
+        @destroy_method = -> { delete :destroy, goal_id: @goal.id, user_id: @user.id, id: @participation.id}
       end
 
       it 'should redirect to goal_path' do

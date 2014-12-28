@@ -7,8 +7,9 @@ class ParticipationsController < ApplicationController
   end
 
   def destroy
-    @participation = Participation.find(params[:id])
-    @goal = @participation.goal
+    @goal = Goal.friendly.find(params[:goal_id])
+    @user = User.find(params[:user_id])
+    @participation = Participation.find_by(user: @user, goal: @goal)
     @participation.destroy
     redirect_to @goal
   end

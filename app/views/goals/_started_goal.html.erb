@@ -6,22 +6,16 @@
         <h5>I want to <%= @goal.title %>.</h5>
       </div>
       <div class="four columns">
-        <p>Goal Created By</p>
+        <p>Goal Started On</p>
         <div class="row">
-          <div class="two columns">
-            <% if @goal.user.profile_picture.blank? %>
-              <%= fa_icon 'user 3x', class: 'circular' %>
-            <% else %>
-              <%= image_tag @goal.user.profile_picture.url %>
-            <% end %>
+          <div class="three columns">
+            <div class=<%= user_missing_profile_picture?(@goal.user.profile_picture.url(:thumb)) %>>
+              <%= image_tag @goal.user.profile_picture.url(:thumb) %>
+            </div>
           </div>
-          <div class="ten columns">
-            <ul>
-              <li><%= @goal.user.full_name %></li>
-              <li>
-                <%= @goal.created_at.strftime('%l:%M%p %a, %b %d, %Y') %>
-              </li>
-            </ul>
+          <div class="nine columns">
+            <p><%= @goal.user.full_name %></p>
+            <p><%= @goal.start_date.strftime('%a, %b %d, %Y') %></p>
           </div>
         </div>
       </div>
@@ -30,20 +24,16 @@
     <div class="goal-participants">
       <div class="participants-list nine columns">
         <p><%= @goal.participants.count %> Active Members</p>
-        <ul>
-          <% @goal.participants.each do |participant| %>
-            <% if participant.profile_picture.blank? %>
-              <li><%= fa_icon 'user 3x', class: 'circular' %></li>
-            <% else %>
-              <li><%= image_tag participant.profile_picture.url %></li>
-            <% end %>
-          <% end %>
-        </ul>
+        <% @goal.participants.each do |participant| %>
+          <div class=<%= user_missing_profile_picture?(participant.profile_picture.url(:thumb)) %>>
+            <%= image_tag participant.profile_picture.url(:thumb) %>
+          </div>
+        <% end %>
       </div>
 
       <div class="participants-actions three columns">
         <% if current_user.participations.pluck(:goal_id).include? @goal.id %>
-          <%= link_to 'Leave Goal', participation_path(goal_id: @goal.id),
+          <%= link_to 'Leave Goal', participation_path(goal_id: @goal.id, user_id: current_user.id),
             class: 'button button-primary', method: :delete %>
         <% else %>
           <%= link_to 'Join Goal', participations_path(goal_id: @goal.id),
@@ -69,22 +59,16 @@
     <div class="row">
       <div class="seven columns">
         <h1>High Scores</h1>
-        <% @goal.participations.order('score DESC').map(&:user).each do |participant| %>
+        <% @participants.each do |participant| %>
           <div class="row user-score-card">
             <div class="two columns">
-              <% if participant.profile_picture.blank? %>
-                <%= fa_icon 'user 3x', class: 'circular' %>
-              <% else %>
-                <%= image_tag participant.profile_picture.url %>
-              <% end %>
+              <div class=<%= user_missing_profile_picture?(participant.profile_picture.url(:thumb)) %>>
+                <%= image_tag participant.profile_picture.url(:thumb) %>
+              </div>
             </div>
             <div class="four columns">
-              <ul>
-                <li><%= participant.full_name %></li>
-                <li>
-                  <%= participant.participations.find_by(goal_id: @goal.id).score %> Points
-                </li>
-              </ul>
+              <p><%= participant.full_name %></p>
+              <p><%= participant.participations.find_by(goal_id: @goal.id).score %> Points</p>
             </div>
             <div class="six columns">
               <% if !(current_user == participant) &&
@@ -109,6 +93,7 @@
               <li><%= category.name %></li>
             <% end %>
           </ul>
+          <br>
         </div>
       </div>
     </div>
@@ -116,17 +101,18 @@
 
   <div class="comments container">
     <%= render partial: 'comments/form', locals: { commentable_id: @goal.id } %>
-
-    <% @goal.root_comments.sort_by(&:created_at).each do |comment| %>
-      <div class="row comment">
-        <div class="twelve columns">
-          <p>
-            <%= comment.user.full_name %>
-            <%= comment.created_at.strftime('%l:%M%p %a, %b %d, %Y') %>
-          </p>
-          <p><%= comment.body %></p>
+    <% unless @goal.root_comments.blank? %>
+      <% @comments.each do |comment| %>
+        <div class="row comment">
+          <div class="twelve columns">
+            <p>
+              <%= comment.user.full_name %>
+              <%= comment.created_at.strftime('%l:%M%p %a, %b %d, %Y') %>
+            </p>
+            <p><%= comment.body %></p>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </section>
