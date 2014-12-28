@@ -1,13 +1,10 @@
 $(document).ready(function() {
   var toggleCheckbox = function() {
-    $('div.invite-user-checkbox').on('click', function(e) {
+    $('div.invite-strangers').on('click', '.invite-user-checkbox', function(e) {
       $(this).toggleClass('added');
       var userId = $(this).data('user-id');
-      if ($('input[type="checkbox"]#' + userId).checked) {
-        $('input[type="checkbox"]#' + userId).prop('checked', false);
-      } else {
-        $('input[type="checkbox"]#' + userId).prop('checked', true);
-      }
+      var userCheckbox = $('input[type="checkbox"]#' + userId);
+      userCheckbox.prop('checked', ($(this).hasClass('added'))? true: false);
     });
   };
 
@@ -19,7 +16,6 @@ $(document).ready(function() {
 
   $(document).on('click', 'div.recommend-more.strangers a', function(e) {
     e.preventDefault();
-    toggleCheckbox();
 
     var data = {
       page: $(this).data('page'),
@@ -29,8 +25,6 @@ $(document).ready(function() {
     $.get('/show_more_strangers', data, function(response) {
       $('div.recommend-more.strangers').remove();
       $('div.invite-strangers').append(response.html);
-
-      toggleCheckbox();
     });
   });
 });
