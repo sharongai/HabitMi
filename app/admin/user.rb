@@ -44,5 +44,6 @@ ActiveAdmin.register User do
       f.input :last_name
       f.input :profile_picture, as: :file
     end
+    f.actions
   end
 end
