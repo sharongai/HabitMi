@@ -1,4 +1,5 @@
 class GoalsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :destroy, :create]
   before_action :find_goal, only: [:show, :destroy, :invite]
 
   def show
