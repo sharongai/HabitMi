@@ -74,6 +74,7 @@ GEM
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
+    cancancan (1.9.2)
     capistrano (3.2.1)
       i18n
       rake (>= 10.0.0)
@@ -351,6 +352,7 @@ DEPENDENCIES
   bower-rails (~> 0.9.1)
   bullet
   byebug
+  cancancan (~> 1.9)
   capistrano (~> 3.2.1)
   capistrano-bundler
   capistrano-cookbook

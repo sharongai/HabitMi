@@ -7,6 +7,7 @@ gem 'acts_as_commentable_with_threading'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'bower-rails', '~> 0.9.1'
+gem 'cancancan', '~> 1.9'
 gem 'devise'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'faker'
