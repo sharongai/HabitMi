@@ -1,4 +1,6 @@
 class ParticipationsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     current_user.participations.create(goal_id: params[:goal_id])
     redirect_to Goal.find(params[:goal_id])

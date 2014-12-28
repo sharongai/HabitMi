@@ -21,7 +21,7 @@ RSpec.describe GoalsController, sidekiq: :fake, type: :controller do
       before { get :new }
 
       it 'should respond with redirect' do
-        expect(response).to be_redirect
+        expect(response).to redirect_to(new_user_session_path)
       end
 
       it 'should render flash' do
@@ -37,7 +37,7 @@ RSpec.describe GoalsController, sidekiq: :fake, type: :controller do
 
       it 'should respond with redirect' do
         @destroy_method.call
-        expect(response).to be_redirect
+        expect(response).to redirect_to(new_user_session_path)
       end
 
       it 'should render flash' do
@@ -70,7 +70,7 @@ RSpec.describe GoalsController, sidekiq: :fake, type: :controller do
 
       it 'should respond with redirect' do
         @create_method.call
-        expect(response).to be_redirect
+        expect(response).to redirect_to(new_user_session_path)
       end
 
       it 'should render flash' do
