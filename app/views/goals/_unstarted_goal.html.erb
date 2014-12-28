@@ -32,7 +32,10 @@
       </div>
 
       <div class="participants-actions three columns">
-        <% if current_user.participations.pluck(:goal_id).include? @goal.id %>
+        <% if @goal.user == current_user %>
+          <%= link_to 'Destroy Goal', goal_path(@goal),
+            class: 'button button-primary', method: :delete %>
+        <% elsif current_user.participations.pluck(:goal_id).include? @goal.id %>
           <%= link_to 'Leave Goal', participation_path(goal_id: @goal.id),
             class: 'button button-primary', method: :delete %>
         <% else %>

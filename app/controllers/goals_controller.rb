@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :find_goal, only: [:show, :invite]
+  before_action :find_goal, only: [:show, :destroy, :invite]
 
   def show
   end
@@ -9,6 +9,11 @@ class GoalsController < ApplicationController
     @goal = current_user.goals.new
     @categories = Category.all
     @users = User.where.not(id: current_user.id).page(params[:page]).per(4)
+  end
+
+  def destroy
+    @goal.destroy
+    redirect_to root_path
   end
 
   def create

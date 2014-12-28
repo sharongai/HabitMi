@@ -139,6 +139,22 @@ RSpec.describe GoalsController, sidekiq: :fake, type: :controller do
     end
   end
 
+  describe 'DELETE destroy' do
+    before do
+      @goal = FactoryGirl.create(:goal)
+      @destroy_method = -> { delete :destroy, id: @goal.id }
+    end
+
+    it 'should respond with redirect to root_path' do
+      @destroy_method.call
+      expect(response).to redirect_to(root_path)
+    end
+
+    it 'should destroy one goal' do
+      expect { @destroy_method.call }.to change(Goal, :count).by(-1)
+    end
+  end
+
   describe 'GET show_more_strangers' do
     before do
       3.times { FactoryGirl.create(:user) }
