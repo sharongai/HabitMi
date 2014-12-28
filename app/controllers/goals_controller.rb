@@ -3,6 +3,8 @@ class GoalsController < ApplicationController
   before_action :find_goal, only: [:show, :destroy, :invite]
 
   def show
+    @participants = @goal.participations.includes(:user).order('score DESC').map(&:user)
+    @comments = @goal.root_comments.includes(:user)
   end
 
   def new

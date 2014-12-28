@@ -6,7 +6,7 @@
         <h5>I want to <%= @goal.title %>.</h5>
       </div>
       <div class="four columns">
-        <p>Goal Created By</p>
+        <p>Goal Started On</p>
         <div class="row">
           <div class="three columns">
             <div class=<%= user_missing_profile_picture?(@goal.user.profile_picture.url(:thumb)) %>>
@@ -15,7 +15,7 @@
           </div>
           <div class="nine columns">
             <p><%= @goal.user.full_name %></p>
-            <p><%= @goal.created_at.strftime('%a, %b %d, %Y') %></p>
+            <p><%= @goal.start_date.strftime('%a, %b %d, %Y') %></p>
           </div>
         </div>
       </div>
@@ -32,11 +32,8 @@
       </div>
 
       <div class="participants-actions three columns">
-        <% if @goal.user == current_user %>
-          <%= link_to 'Destroy Goal', goal_path(@goal),
-            class: 'button button-primary', method: :delete %>
-        <% elsif current_user.participations.pluck(:goal_id).include? @goal.id %>
-          <%= link_to 'Leave Goal', participation_path(goal_id: @goal.id),
+        <% if current_user.participations.pluck(:goal_id).include? @goal.id %>
+          <%= link_to 'Leave Goal', participation_path(goal_id: @goal.id, user_id: current_user.id),
             class: 'button button-primary', method: :delete %>
         <% else %>
           <%= link_to 'Join Goal', participations_path(goal_id: @goal.id),
@@ -62,7 +59,7 @@
     <div class="row">
       <div class="seven columns">
         <h1>High Scores</h1>
-        <% @goal.participations.order('score DESC').map(&:user).each do |participant| %>
+        <% @participants.each do |participant| %>
           <div class="row user-score-card">
             <div class="two columns">
               <div class=<%= user_missing_profile_picture?(participant.profile_picture.url(:thumb)) %>>
@@ -104,17 +101,18 @@
 
   <div class="comments container">
     <%= render partial: 'comments/form', locals: { commentable_id: @goal.id } %>
-
-    <% @goal.root_comments.sort_by(&:created_at).each do |comment| %>
-      <div class="row comment">
-        <div class="twelve columns">
-          <p>
-            <%= comment.user.full_name %>
-            <%= comment.created_at.strftime('%l:%M%p %a, %b %d, %Y') %>
-          </p>
-          <p><%= comment.body %></p>
+    <% unless @goal.root_comments.blank? %>
+      <% @comments.each do |comment| %>
+        <div class="row comment">
+          <div class="twelve columns">
+            <p>
+              <%= comment.user.full_name %>
+              <%= comment.created_at.strftime('%l:%M%p %a, %b %d, %Y') %>
+            </p>
+            <p><%= comment.body %></p>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </section>
