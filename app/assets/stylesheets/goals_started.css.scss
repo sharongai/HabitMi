@@ -20,21 +20,9 @@ section.started-goal {
 
       div.four.columns {
         div.row {
-          div.two.columns {
-            i {
-              position: relative;
-              right: 10px;
-            }
-          }
-
-          div.ten.columns {
-            ul {
-              margin-left: 10px;
-              list-style-type: none;
-
-              li {
-                margin-bottom: 0;
-              }
+          div.nine.columns {
+            p {
+              margin-bottom: 0;
             }
           }
         }
@@ -45,26 +33,13 @@ section.started-goal {
       div.participants-list {
         margin-left: 0;
 
-        ul {
-          list-style-type: none;
+        div.user-thumbnail, div.user-missing-thumbnail {
+          display: inline-block;
+        }
 
-          li {
-            display: inline;
-            margin-right: 10px;
-
-            i {
-              position: relative;
-              bottom: 13px;
-            }
-
-            img {
-              width: 58px;
-              height: 58px;
-              border-radius: 29px;
-              -webkit-border-radius: 29px;
-              -moz-border-radius: 29px;
-            }
-          }
+        div.user-thumbnail {
+          position: relative;
+          top: 10px;
         }
       }
 
@@ -83,16 +58,12 @@ section.started-goal {
     div.row {
       div.seven.columns {
         div.user-score-card {
-          img {
-            width: 58px;
-            height: 58px;
-            border-radius: 29px;
-            -webkit-border-radius: 29px;
-            -moz-border-radius: 29px;
-          }
+          margin-bottom: 25px;
 
-          ul {
-            list-style-type: none;
+          div.four.columns {
+            p {
+              margin-bottom: 0;
+            }
           }
         }
       }
@@ -100,11 +71,17 @@ section.started-goal {
       div.five.columns {
         div.categories-list {
           ul {
+            width: 100%;
             list-style-type: none;
 
             li {
-              display: inline;
+              float: left;
+              width: 50%;
             }
+          }
+
+          br {
+            clear: left;
           }
         }
       }

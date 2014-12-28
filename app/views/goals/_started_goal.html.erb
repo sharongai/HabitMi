@@ -8,20 +8,14 @@
       <div class="four columns">
         <p>Goal Created By</p>
         <div class="row">
-          <div class="two columns">
-            <% if @goal.user.profile_picture.blank? %>
-              <%= fa_icon 'user 3x', class: 'circular' %>
-            <% else %>
-              <%= image_tag @goal.user.profile_picture.url %>
-            <% end %>
+          <div class="three columns">
+            <div class=<%= user_missing_profile_picture?(@goal.user.profile_picture.url(:thumb)) %>>
+              <%= image_tag @goal.user.profile_picture.url(:thumb) %>
+            </div>
           </div>
-          <div class="ten columns">
-            <ul>
-              <li><%= @goal.user.full_name %></li>
-              <li>
-                <%= @goal.created_at.strftime('%l:%M%p %a, %b %d, %Y') %>
-              </li>
-            </ul>
+          <div class="nine columns">
+            <p><%= @goal.user.full_name %></p>
+            <p><%= @goal.created_at.strftime('%a, %b %d, %Y') %></p>
           </div>
         </div>
       </div>
@@ -30,19 +24,18 @@
     <div class="goal-participants">
       <div class="participants-list nine columns">
         <p><%= @goal.participants.count %> Active Members</p>
-        <ul>
-          <% @goal.participants.each do |participant| %>
-            <% if participant.profile_picture.blank? %>
-              <li><%= fa_icon 'user 3x', class: 'circular' %></li>
-            <% else %>
-              <li><%= image_tag participant.profile_picture.url %></li>
-            <% end %>
-          <% end %>
-        </ul>
+        <% @goal.participants.each do |participant| %>
+          <div class=<%= user_missing_profile_picture?(participant.profile_picture.url(:thumb)) %>>
+            <%= image_tag participant.profile_picture.url(:thumb) %>
+          </div>
+        <% end %>
       </div>
 
       <div class="participants-actions three columns">
-        <% if current_user.participations.pluck(:goal_id).include? @goal.id %>
+        <% if @goal.user == current_user %>
+          <%= link_to 'Destroy Goal', goal_path(@goal),
+            class: 'button button-primary', method: :delete %>
+        <% elsif current_user.participations.pluck(:goal_id).include? @goal.id %>
           <%= link_to 'Leave Goal', participation_path(goal_id: @goal.id),
             class: 'button button-primary', method: :delete %>
         <% else %>
@@ -72,19 +65,13 @@
         <% @goal.participations.order('score DESC').map(&:user).each do |participant| %>
           <div class="row user-score-card">
             <div class="two columns">
-              <% if participant.profile_picture.blank? %>
-                <%= fa_icon 'user 3x', class: 'circular' %>
-              <% else %>
-                <%= image_tag participant.profile_picture.url %>
-              <% end %>
+              <div class=<%= user_missing_profile_picture?(participant.profile_picture.url(:thumb)) %>>
+                <%= image_tag participant.profile_picture.url(:thumb) %>
+              </div>
             </div>
             <div class="four columns">
-              <ul>
-                <li><%= participant.full_name %></li>
-                <li>
-                  <%= participant.participations.find_by(goal_id: @goal.id).score %> Points
-                </li>
-              </ul>
+              <p><%= participant.full_name %></p>
+              <p><%= participant.participations.find_by(goal_id: @goal.id).score %> Points</p>
             </div>
             <div class="six columns">
               <% if !(current_user == participant) &&
@@ -109,6 +96,7 @@
               <li><%= category.name %></li>
             <% end %>
           </ul>
+          <br>
         </div>
       </div>
     </div>
