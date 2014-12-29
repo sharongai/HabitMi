@@ -5,5 +5,6 @@ class VoteLog < ActiveRecord::Base
 
   validates :user, presence: true
   validates :participation, presence: true
-  validates :user_id, uniqueness: { scope: :participation_id }
+
+  # Adds database validation for making user vote id unique for each day
 end

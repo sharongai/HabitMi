@@ -1,6 +1,7 @@
 section.started-goal {
   div.goal-info-box {
     border: 1px solid LightGray;
+    box-shadow: 0 0 15px #CCC;
     margin-top: 25px;
     margin-bottom: 25px;
     padding: 25px 30px 25px 30px;
@@ -15,16 +16,6 @@ section.started-goal {
 
         h5 {
           color: $type-aqua-blue;
-        }
-      }
-
-      div.four.columns {
-        div.row {
-          div.nine.columns {
-            p {
-              margin-bottom: 0;
-            }
-          }
         }
       }
     }
@@ -50,6 +41,10 @@ section.started-goal {
         a {
           width: 100%;
         }
+
+        p {
+          margin-bottom: 0;
+        }
       }
     }
   }
@@ -63,6 +58,12 @@ section.started-goal {
           div.four.columns {
             p {
               margin-bottom: 0;
+            }
+          }
+
+          div.six.columns {
+            a {
+              width: 132px;
             }
           }
         }

@@ -32,25 +32,13 @@
       </div>
 
       <div class="participants-actions three columns">
-        <% if current_user.participations.pluck(:goal_id).include? @goal.id %>
-          <%= link_to 'Leave Goal', participation_path(goal_id: @goal.id, user_id: current_user.id),
-            class: 'button button-primary', method: :delete %>
-        <% else %>
-          <%= link_to 'Join Goal', participations_path(goal_id: @goal.id),
-            class: 'button button-primary', method: :post %>
-        <% end %>
-
-        <% if current_user.participations.pluck(:goal_id).include? @goal.id %>
-          <% if current_user.voted?(@goal) %>
-            <%= link_to 'You did it',
-              '#', class: 'button' %>
-          <% else %>
-            <%= link_to 'I did it',
-              score_participation_path(
-                current_user.participations.find_by(goal_id: @goal.id)),
-              class: 'button', method: :post %>
-          <% end %>
-        <% end %>
+        <%# <% if current_user.participations.pluck(:goal_id).include? @goal.id %>
+        <%#   <%= link_to 'Leave Goal', participation_path(goal_id: @goal.id, user_id: current_user.id),
+        <%#     class: 'button button-primary', method: :delete %>
+        <%# <% else %>
+        <%#   <%= link_to 'Join Goal', participations_path(goal_id: @goal.id),
+        <%#     class: 'button button-primary', method: :post %>
+        <%# <% end %>
       </div>
     </div>
   </div>
@@ -71,7 +59,17 @@
               <p><%= participant.participations.find_by(goal_id: @goal.id).score %> Points</p>
             </div>
             <div class="six columns">
-              <% if !(current_user == participant) &&
+              <% if (current_user == participant) %>
+                <% if participant.voted?(@goal) %>
+                  <%= link_to 'You did it',
+                    '#', class: 'button u-pull-right' %>
+                <% else %>
+                  <%= link_to 'I did it',
+                    score_participation_path(
+                      participant.participations.find_by(goal_id: @goal.id)),
+                    class: 'button u-pull-right', method: :post %>
+                <% end %>
+              <% elsif !(current_user == participant) &&
                   !participant.vouched?(current_user, @goal) %>
                 <%= link_to 'Vouch',
                   vouch_participation_path(
@@ -86,20 +84,21 @@
         <% end %>
       </div>
       <div class="five columns">
-        <div class="categories-list">
-          <h1>Category</h1>
-          <ul>
-            <% @goal.categories.each do |category| %>
-              <li><%= category.name %></li>
-            <% end %>
-          </ul>
-          <br>
-        </div>
+        <!-- <div class="categories&#45;list"> -->
+        <!--   <h1>Category</h1> -->
+        <!--   <ul> -->
+        <!--     <% @goal.categories.each do |category| %> -->
+        <!--       <li><%= category.name %></li> -->
+        <!--     <% end %> -->
+        <!--   </ul> -->
+        <!--   <br> -->
+        <!-- </div> -->
       </div>
     </div>
   </div>
 
   <div class="comments container">
+    <h1>Discussion Board</h1>
     <%= render partial: 'comments/form', locals: { commentable_id: @goal.id } %>
     <% unless @goal.root_comments.blank? %>
       <% @comments.each do |comment| %>

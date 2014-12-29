@@ -31,7 +31,7 @@ section.home-page-signed-out {
           i {
             border: 2px solid LightGray;
             border-radius: 50%;
-            padding: 20px;
+            padding: 15px;
             color: LightGray;
           }
         }
@@ -43,7 +43,7 @@ section.home-page-signed-out {
             i {
               border: 2px solid $type-aqua-blue;
               border-radius: 50%;
-              padding: 20px;
+              padding: 15px;
               color: $type-aqua-blue;
             }
           }
@@ -56,6 +56,27 @@ section.home-page-signed-out {
 
       &.active {
         display: initial;
+      }
+
+      &.trending-goals {
+        text-align: center;
+
+        div.row {
+          div.four.columns {
+            border: 1px solid #35F197;
+            border-radius: 10px;
+
+            h5 {
+              margin-top: 2rem;
+            }
+
+            ul {
+              list-style-type: square;
+              text-align: left;
+              padding-left: 17px;
+            }
+          }
+        }
       }
     }
   }

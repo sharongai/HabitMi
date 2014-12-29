@@ -6,6 +6,11 @@ form.goals-form {
       h1 {
         text-transform: uppercase;
       }
+
+      input[type="text"] {
+        width: 220px;
+        text-align: right;
+      }
     }
   }
 

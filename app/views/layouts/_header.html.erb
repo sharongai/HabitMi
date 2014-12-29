@@ -1,4 +1,4 @@
-<nav>
+<nav class=<%= 'light-blue' if user_signed_in? && controller_name == 'home' && action_name == 'index' %>>
   <div class="container">
     <div class="sign-in u-pull-left" id="sign-in-div">
       <% if user_signed_in? %>

@@ -29,7 +29,7 @@ class Goal < ActiveRecord::Base
   end
 
   def days_left
-    (self.end_date.to_date - self.start_date.to_date).to_i
+    (self.end_date.to_date - Date.today).to_i
   end
 
   private

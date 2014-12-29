@@ -4,6 +4,11 @@ nav {
   padding-top: 14px;
   height: 40px;
 
+  &.light-blue {
+    background-color: #9CE1F6;
+    height: 58px;
+  }
+
   div.sign-in {
     a {
       text-decoration: none;
